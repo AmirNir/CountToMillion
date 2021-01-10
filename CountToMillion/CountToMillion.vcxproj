@@ -19,11 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Counter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ManagedEvent.cpp" />
     <ClCompile Include="ManagedThread.cpp" />
     <ClCompile Include="WinAPIException.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Counter.h" />
+    <ClInclude Include="ManagedEvent.h" />
     <ClInclude Include="ManagedThread.h" />
     <ClInclude Include="WinAPIException.h" />
   </ItemGroup>

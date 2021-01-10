@@ -6,6 +6,13 @@
 class ManagedThread
 {
 public:
+	/*
+	 * The Constructor - starts a thread.
+	 * Might throw WinAPI exception.
+	 *
+	 * @param threadMain - a pointer to the thread main function
+	 * @param param - a LPVOID parameter passed to threadMain
+	 */
 	ManagedThread(LPTHREAD_START_ROUTINE threadMain, LPVOID param);
 
 	// delete copy contructor and copy assignment

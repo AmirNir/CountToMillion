@@ -24,12 +24,24 @@
     <ClCompile Include="WinAPIException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Counter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagedEvent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ManagedThread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WinAPIException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Counter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

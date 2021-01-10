@@ -1,11 +1,11 @@
 #include "ManagedThread.h"
 
-ManagedThread::ManagedThread(LPTHREAD_START_ROUTINE threadMain, LPVOID param) : m_handle(CreateThread(nullptr,
+ManagedThread::ManagedThread(LPTHREAD_START_ROUTINE threadMain, LPVOID param) : m_handle(CreateThread(NULL,
 																										0,
 																										threadMain,
 																										param,
 																										0,
-																										nullptr))
+																										NULL))
 {
 	if (m_handle == NULL) {
 		throw WinAPIException(GetLastError());
