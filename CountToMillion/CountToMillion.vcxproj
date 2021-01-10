@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ManagedThread.cpp" />
+    <ClCompile Include="WinAPIException.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ManagedThread.h" />
+    <ClInclude Include="WinAPIException.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{a2cc0f34-05c4-4c34-9531-caee9660ebd4}</ProjectGuid>
