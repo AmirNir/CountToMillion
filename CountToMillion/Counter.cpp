@@ -2,19 +2,43 @@
 #include <iostream>
 
 
+constexpr int maxNum = 1000000;
+constexpr DWORD sleepTime = 1000;
+
 DWORD WINAPI counterMain(LPVOID param)
 {
 	Counter* current = static_cast<Counter*>(param);
 	HANDLE readyEvent = current->getReadyEvent();
 	DWORD counter = current->getCounter();
 	// TODO: finish counter logic
-	while ()
-	WaitForSingleObject(readyEvent, INFINITE);
-	ResetEvent(readyEvent);
+	while (counter <= maxNum) {
+		WaitForSingleObject(readyEvent, INFINITE);
+		// Reset the current thread's event
+		ResetEvent(readyEvent);
 
-	std::cout << current->getCounter() << std::endl;
+		if (current->getShared() >= counter) {
+			std::cout << "Resetting!" << std::endl;
+			counter = 0;
+		}
 
-	SetEvent(current->getOtherThreadEvent());
+		// Print the current counter
+		std::cout << counter << std::endl;
+
+		// Update the shared pointer
+		current->SetShared(counter);
+
+		// Increase the counter
+		counter += 2;
+		current->SetCounter(counter);
+
+		// Sleep for a second
+		Sleep(sleepTime);
+		
+		// Signal the other thread
+		if (SetEvent(current->getOtherThreadEvent()) == 0) {
+			throw WinAPIException(GetLastError());
+		}
+	}
 	return 0;
 }
 
@@ -40,9 +64,9 @@ DWORD Counter::getCounter() const
 	return m_counter;
 }
 
-void Counter::SetCounter(DWORD shared)
+void Counter::SetCounter(DWORD counter)
 {
-	m_counter = shared;
+	m_counter = counter;
 }
 
 HANDLE Counter::getReadyEvent() const

@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include "Counter.h"
 #include "ManagedEvent.h"
 
@@ -13,8 +14,8 @@ int main() {
 	// initialize the shared memory
 	DWORD shared = 0;
 
-	Counter(&shared, 0, firstEvent.getHandle(), secondEvent.getHandle());
-	Counter(&shared, 1, secondEvent.getHandle(), firstEvent.getHandle());
+	Counter firstThread(&shared, 1, firstEvent.getHandle(), secondEvent.getHandle());
+	Counter secondTherad(&shared, 2, secondEvent.getHandle(), firstEvent.getHandle());
 
 	return 0;
 }

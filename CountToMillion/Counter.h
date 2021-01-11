@@ -26,7 +26,7 @@ public:
 	DWORD getShared() const;
 	void SetShared(DWORD shared);
 	DWORD getCounter() const;
-	void SetCounter(DWORD shared);
+	void SetCounter(DWORD counter);
 	HANDLE getReadyEvent() const;
 	HANDLE getOtherThreadEvent() const;
 
