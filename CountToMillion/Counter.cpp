@@ -16,7 +16,7 @@ DWORD WINAPI counterMain(LPVOID param)
 		// Reset the current thread's event
 		ResetEvent(readyEvent);
 
-		if (current->getShared() >= counter) {
+		if (current->getShared() != counter - 1) {
 			std::cout << "Resetting!" << std::endl;
 			counter = 0;
 		}
