@@ -42,7 +42,7 @@ DWORD WINAPI counterMain(LPVOID param)
 	return 0;
 }
 
-Counter::Counter(LPDWORD shared, DWORD counter, HANDLE readyEvent, HANDLE otherThreadEvent) : m_shared(shared), m_counter(counter), 
+Counter::Counter(SharedObject& shared, DWORD counter, HANDLE readyEvent, HANDLE otherThreadEvent) : m_shared(shared), m_counter(counter),
 																							  m_readyEvent(readyEvent), m_otherThreadEvent(otherThreadEvent),
 																							  ManagedThread(&counterMain, this)
 {
@@ -51,12 +51,12 @@ Counter::Counter(LPDWORD shared, DWORD counter, HANDLE readyEvent, HANDLE otherT
 
 DWORD Counter::getShared() const
 {
-	return *m_shared;
+	return m_shared.getValue();
 }
 
 void Counter::SetShared(DWORD shared)
 {
-	*m_shared = shared;
+	m_shared.setValue(shared);
 }
 
 DWORD Counter::getCounter() const

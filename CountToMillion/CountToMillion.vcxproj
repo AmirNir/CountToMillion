@@ -23,12 +23,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManagedEvent.cpp" />
     <ClCompile Include="ManagedThread.cpp" />
+    <ClCompile Include="SharedObject.cpp" />
     <ClCompile Include="WinAPIException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Counter.h" />
     <ClInclude Include="ManagedEvent.h" />
     <ClInclude Include="ManagedThread.h" />
+    <ClInclude Include="SharedObject.h" />
     <ClInclude Include="WinAPIException.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

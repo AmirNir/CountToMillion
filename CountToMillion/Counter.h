@@ -1,5 +1,6 @@
 #pragma once
 #include "ManagedThread.h"
+#include "SharedObject.h"
 
 DWORD WINAPI counterMain(LPVOID param);
 
@@ -12,11 +13,11 @@ public:
 	 * it will pass itself as parameter.
 	 * might throw WinAPI excpetion.
 	 *
-	 * @param m_shared - A pointer to the shared buffer that contains the last printed message
+	 * @param m_shared - A refrence to the shared memory object.
 	 * @param m_counter - The current therad's counter
 	 * @param m_readyEvent - A handle of the NamedEvent object that this thread will wait for
 	 */
-	Counter(LPDWORD shared,
+	Counter(SharedObject& shared,
 			DWORD counter,
 			HANDLE readyEvent,
 			HANDLE otherThreadEvent
@@ -31,8 +32,8 @@ public:
 	HANDLE getOtherThreadEvent() const;
 
 private:
-	// A pointer to the shared buffer that contains the last printed message
-	LPDWORD m_shared;
+	// A refrence to the shared memory location.
+	SharedObject& m_shared;
 	// The current therad's counter 
 	DWORD m_counter;
 	// A handle of the NamedEvent object that this thread will wait for
